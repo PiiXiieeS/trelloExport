@@ -10,7 +10,7 @@
 var $excel_btn,
     columnHeadings = ['List', 'Title', 'Description', 'Points', 'Due', 'Members', 'Labels'];
 
-window.URL = window.webkitURL || window.URL;
+window.URL = window.URL;
 
 // on DOM load
 $(function () {
@@ -20,8 +20,39 @@ $(function () {
     $('.js-share').live('mouseup', function () {
         setTimeout(addExportLink);
     });
+
+    $('.list-card-details').live('mouseup', function() {
+        setTimeout(addTemplateLink);
+    });
 });
 
+// Add a Export Excel button to the DOM and trigger export if clicked
+function addTemplateLink() { 
+   
+    var $js_btn = $('a.js-attach'); // Attachment button
+    
+    // See if our Export Excel is already there
+    if ($('form').find('.js-template-form').length) return;
+    
+    // The new link/button
+    if ($js_btn.length) $template_btn = $('<a>')
+        .attr({
+        class: 'button-link js-template-form',
+        href: '#',
+        //target: '_blank',
+        title: 'Open Template Form'
+        })
+        .click(createTemplateForm)
+        .insertAfter($js_btn.parent())
+        .text('     Template')
+        $('.js-template-form').prepend('<span class="icon-sm icon-card"></span>');
+}
+
+function createTemplateForm() {
+    //alert('hola');
+    $("a.card-detail-item-header-edit.js-edit-desc")[0].click();
+    //return;
+}
 
 // Add a Export Excel button to the DOM and trigger export if clicked
 function addExportLink() { 

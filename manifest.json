@@ -16,6 +16,7 @@
                    "lib/jszip-load.js",
                    "lib/jszip-inflate.js",
                    "lib/jszip-deflate.js",
+                   "lib/page.js",
                    "trelloexport.js"]
 		}
 	]
